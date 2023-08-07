@@ -2,9 +2,13 @@ package com.example.wondermusic.data.local
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
+import com.example.wondermusic.data.converters.Converters
 import com.example.wondermusic.data.local.model.ArtistLocal
+import com.example.wondermusic.data.local.model.ImagesLocal
 
-@Database(entities = [ArtistLocal::class], version = 1, exportSchema = false)
+@Database(entities = [ArtistLocal::class, ImagesLocal::class], version = 9, exportSchema = true)
+@TypeConverters(Converters::class)
 abstract class ArtistDatabase: RoomDatabase() {
     abstract fun artistDao(): ArtistDao
 }

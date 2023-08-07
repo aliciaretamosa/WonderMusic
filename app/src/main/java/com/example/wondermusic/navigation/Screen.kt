@@ -22,4 +22,9 @@ sealed class Screen(
             }
         )
     )
+
+    object ArtistFavoriteScreen : Screen(
+        route = "artistFavorite",
+        arguments = emptyList()
+    )
 }

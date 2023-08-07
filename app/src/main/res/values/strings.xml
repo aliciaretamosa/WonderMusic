@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">WonderMusic</string>
+    <string name="artist_list_screen_route">ArtistListScreen</string>
+    <string name="artist_detail_screen_route">ArtistDetailScreen</string>
 </resources>

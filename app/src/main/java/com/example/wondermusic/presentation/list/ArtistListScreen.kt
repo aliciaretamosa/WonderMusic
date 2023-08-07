@@ -1,4 +1,4 @@
-package com.example.wondermusic.list
+package com.example.wondermusic.presentation.list
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -35,9 +35,9 @@ fun ArtistListScreen(
         items(heroList?.size ?: 0) { i ->
             // Unwrap
             val item = heroList?.get(i)
-            item?.let { hero ->
-                ShowArtistList(hero) {
-                    onItemClick.invoke(hero.id)
+            item?.let { artist ->
+                ShowArtistList(artist) {
+                    onItemClick.invoke(artist.id)
                 }
             }
         }

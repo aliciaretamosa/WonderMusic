@@ -71,7 +71,8 @@ private fun getDatabase(context: Context) : ArtistDatabase =
     Room.databaseBuilder(
         context,
         ArtistDatabase::class.java, "artist-db"
-    ).build()
+    ).fallbackToDestructiveMigration()
+        .build()
 
 private fun providesHeroDao(db: ArtistDatabase) : ArtistDao =
     db.artistDao()

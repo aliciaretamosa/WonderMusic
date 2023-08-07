@@ -1,4 +1,4 @@
-package com.example.wondermusic.list
+package com.example.wondermusic.presentation.list
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

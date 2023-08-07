@@ -7,9 +7,8 @@ import com.squareup.moshi.Json
 data class ArtistDto (
     @Json (name = "id") val id: String?,
     @Json(name = "name") val name: String?,
-    @Json(name = "photoUrl") val photoUrl: String?,
-    @Json(name = "photoHeight") val photoHeight: Int?,
-    @Json(name = "photoWidth") val photoWidth: Int?,
-   // @Json(name = "genres") val genres: List<String>?,
-    @Json(name = "popularity") val popularity: Int?
+    @Json(name = "images") val images: List<ImagesDto>,
+    @Json(name = "followers") val followers: FollowersDto,
+    @Json(name = "genres") val genres: List<String>,
+
     )

@@ -5,7 +5,9 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Transaction
 import com.example.wondermusic.data.local.model.ArtistLocal
+import com.example.wondermusic.data.local.model.ImagesLocal
 
 @Dao
 interface ArtistDao {
@@ -20,4 +22,5 @@ interface ArtistDao {
 
     @Delete
     suspend fun delete(model: ArtistLocal)
+
 }

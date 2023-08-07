@@ -1,7 +1,7 @@
 package com.keepcoding.androidsuperpoderes.di
 
-import com.example.wondermusic.detail.DetailViewModel
-import com.example.wondermusic.list.ArtistListViewModel
+import com.example.wondermusic.presentation.detail.DetailViewModel
+import com.example.wondermusic.presentation.list.ArtistListViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 

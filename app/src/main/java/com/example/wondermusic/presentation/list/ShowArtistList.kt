@@ -1,4 +1,4 @@
-package com.example.wondermusic.list
+package com.example.wondermusic.presentation.list
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
@@ -21,12 +21,10 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
-import com.example.wondermusic.ArtistTestDataBuilder
 import com.example.wondermusic.R
 import com.example.wondermusic.components.StarComponent
 import com.example.wondermusic.domain.model.ArtistModel
@@ -57,6 +55,7 @@ fun ShowArtistList(
                 },
             verticalAlignment = Alignment.CenterVertically
         ) {
+
             AsyncImage(
                 modifier = Modifier
                     .size(100.dp)
@@ -64,7 +63,7 @@ fun ShowArtistList(
                 placeholder = painterResource(id = R.drawable.foto),
                 error = painterResource(id = R.drawable.foto),
                 model = ImageRequest.Builder(LocalContext.current)
-                    .data(artist.photoUrl)
+                    .data(artist.images.url)
                     .build(), contentDescription = ""
             )
             Row(
@@ -77,11 +76,6 @@ fun ShowArtistList(
                 ) {
                     Text(
                         text = artist.name,
-                        maxLines = 1,
-                        overflow = TextOverflow.Ellipsis
-                    )
-                    Text(
-                        text = artist.popularity.toString(),
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis
                     )
@@ -108,14 +102,15 @@ fun ShowArtistList(
     }
 }
 
+/*
 @Composable
 @Preview
 fun ShowArtistPreview() {
     ShowArtistList(
         ArtistTestDataBuilder()
-            .withName("Sample name long text long text long text long textlong text long text long text")
-            .buildSingle()
+            .withNumElements(10)
+            .buildList()
     ) {
         // Nothing todo here
     }
-}
+}*/

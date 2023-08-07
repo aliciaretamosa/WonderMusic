@@ -15,7 +15,9 @@ class ArtistRepositoryImpl(
 
         // Lógica de coordinación de datos
         if (localData.isNotEmpty()) {
-            return localData.map { it.toArtistModel() }
+            return localData.map {
+                it.toArtistModel()
+            }
         } else {
             val remoteData = remoteDataSource.getArtistList().filter {
                 (it.id?.isNotEmpty() == true)

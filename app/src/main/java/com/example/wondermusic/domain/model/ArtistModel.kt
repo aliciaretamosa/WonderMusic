@@ -1,11 +1,12 @@
 package com.example.wondermusic.domain.model
 
+import com.example.wondermusic.data.remote.dto.FollowersDto
+import com.squareup.moshi.Json
+
 data class ArtistModel (
     val id: String,
     val name: String,
-    val photoUrl: String,
-    val photoHeight: Int,
-    val photoWidth: Int,
-    //val genres: List<String>,
-    val popularity: Int
+    val images: ImagesModel,
+    val followers: FollowersModel,
+    val genres: List<String>?,
 )

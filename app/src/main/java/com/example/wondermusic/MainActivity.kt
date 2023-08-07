@@ -18,7 +18,6 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             WonderMusicTheme {
-                // A surface container using the 'background' color from the theme
                 NavigationGraph()
             }
         }
