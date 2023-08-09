@@ -7,7 +7,7 @@ import retrofit2.http.Headers
 
 
 const val TOKEN =
-    "BQBPbWt0ucoDpxATBhqeI8tMSOBP2FekVQBHC3kiMpnGblnliMyPApV_ZHDeXSDGGUqjWub0JMCZioW8qquPchddUwbwJWlKXXH2KWXm1QmdnrIi-ZI"
+    "BQDJfek7WUDPEGn3QAD4HkntUP7u2TwQCQLJ5DW9Bxir0TtvE8zny1IxPlYYMCaVyb8V-7klyoDmSSWegWIF93l835jUfxGUJ2PCyGFAu9AyhkKWOOg"
 
 interface ArtistApi {
 

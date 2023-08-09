@@ -39,10 +39,52 @@ class SuperHeroApiTest {
     }
 
     @Test
-    fun `WHEN request hero list EXPECT result`() = runTest {
+    fun `WHEN request artistList list EXPECT result`() = runTest {
         val result = api.getArtistList()
 
         assertThat(result.artists.isNotEmpty(), `is`(true))
+    }
+
+    @Test
+    fun `WHEN request relsBTopTracks list EXPECT result`() = runTest {
+        val result = api.getArtistTopTracksRelsB()
+        assertThat(result.tracks.isNotEmpty(), `is`(true))
+    }
+
+    @Test
+    fun `WHEN request rosaliaTopTracks list EXPECT result`() = runTest {
+        val result = api.getArtistTopTracksRosalia()
+        assertThat(result.tracks.isNotEmpty(), `is`(true))
+    }
+
+    @Test
+    fun `WHEN request anaMenaTopTracks list EXPECT result`() = runTest {
+        val result = api.getArtistTopTracksAnaMena()
+        assertThat(result.tracks.isNotEmpty(), `is`(true))
+    }
+
+    @Test
+    fun `WHEN request billieTopTracks list EXPECT result`() = runTest {
+        val result = api.getArtistTopTracksBillie()
+        assertThat(result.tracks.isNotEmpty(), `is`(true))
+    }
+
+    @Test
+    fun `WHEN request ratataTopTracks list EXPECT result`() = runTest {
+        val result = api.getArtistTopTracksRatata()
+        assertThat(result.tracks.isNotEmpty(), `is`(true))
+    }
+
+    @Test
+    fun `WHEN request aviciiTopTracks list EXPECT result`() = runTest {
+        val result = api.getArtistTopTracksAvicii()
+        assertThat(result.tracks.isNotEmpty(), `is`(true))
+    }
+
+    @Test
+    fun `WHEN request ladyGagaTopTracks list EXPECT result`() = runTest {
+        val result = api.getArtistTopTracksLadyGaga()
+        assertThat(result.tracks.isNotEmpty(), `is`(true))
     }
 
     /*

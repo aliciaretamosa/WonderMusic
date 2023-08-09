@@ -65,15 +65,4 @@ class DetailViewModel(
         }
     }
 
-    fun getTopTracks2(id: String) = viewModelScope.launch {
-        try {
-            val result = withContext(Dispatchers.IO) {
-                //getTopTracksUseCase.invokeRelsB(id)
-                getTopTracksUseCase.invokeRosalia(id)
-            }
-            _tracksList.value = result
-        } catch (_: Throwable) {
-            _errorMessage.value = "Error lunched from ViewModel"
-        }
-    }
 }

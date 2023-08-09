@@ -22,7 +22,7 @@ import org.junit.Rule
 import org.junit.Test
 
 @ExperimentalCoroutinesApi
-class HeroListViewModelTest {
+class ArtistListViewModelTest {
     @get:Rule
     val instantExecutorRule = InstantTaskExecutorRule()
     @get:Rule

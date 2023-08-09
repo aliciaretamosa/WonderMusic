@@ -1,8 +1,14 @@
 package com.keepcoding.androidsuperpoderes.presentation.detail
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import com.example.wondermusic.AlbumTestDataBuilder
 import com.example.wondermusic.ArtistTestDataBuilder
+import com.example.wondermusic.data.local.model.AlbumLocal
+import com.example.wondermusic.data.local.model.ImagesLocal
+import com.example.wondermusic.domain.model.AlbumModel
+import com.example.wondermusic.domain.model.ImagesModel
 import com.example.wondermusic.domain.usecase.GetDetailUseCase
+import com.example.wondermusic.domain.usecase.GetTopTracksUseCase
 import com.example.wondermusic.presentation.detail.DetailViewModel
 import com.keepcoding.androidsuperpoderes.testutil.DefaultDispatcherRule
 import com.keepcoding.androidsuperpoderes.testutil.getOrAwaitValue
@@ -25,6 +31,9 @@ class DetailViewModelTest {
     @MockK(relaxed = true)
     private lateinit var getDetailUseCase: GetDetailUseCase
 
+    @MockK(relaxed = true)
+    private lateinit var getTopTracksUseCase: GetTopTracksUseCase
+
     @Before
     fun setup() {
         MockKAnnotations.init(this)
@@ -35,7 +44,9 @@ class DetailViewModelTest {
         coEvery { getDetailUseCase.invoke("test-id") } returns
                 ArtistTestDataBuilder().buildSingle()
 
-        val viewModel = DetailViewModel(getDetailUseCase)
+        coEvery { getTopTracksUseCase.invokeRelsB("test-id")}
+
+        val viewModel = DetailViewModel(getDetailUseCase,getTopTracksUseCase)
 
         viewModel.getArtist("test-id")
 
@@ -44,5 +55,24 @@ class DetailViewModelTest {
         assertThat(res.id, `is`("test-id"))
     }
 
+    @Test
+    fun `WHEN detail viewModel top tracks getData EXPECT returns data`() = runTest {
+        coEvery { getDetailUseCase.invoke("test-id") } returns
+                ArtistTestDataBuilder().buildSingle()
 
+        coEvery { getTopTracksUseCase.invokeRelsB("test-id")} returns getAlbumListModel()
+
+        val viewModel = DetailViewModel(getDetailUseCase,getTopTracksUseCase)
+
+        viewModel.getTopTracks("test-id")
+
+        val res = viewModel.tracksList.getOrAwaitValue()
+
+        assertThat(res.size, `is`(2))
+    }
 }
+
+fun getAlbumListModel() = listOf(
+    AlbumModel("id", "name", ImagesModel(10,"https://photo-url",10)),
+    AlbumModel("id", "name", ImagesModel(10,"https://photo-url",10))
+)

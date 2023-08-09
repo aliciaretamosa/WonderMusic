@@ -8,12 +8,11 @@ import com.example.wondermusic.data.mappers.toArtistModel
 import com.example.wondermusic.data.remote.dto.ArtistDto
 import com.example.wondermusic.data.remote.dto.FollowersDto
 import com.example.wondermusic.data.remote.dto.ImagesDto
-import com.example.wondermusic.domain.model.ImagesModel
 import org.hamcrest.CoreMatchers.`is`
 import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Test
 
-class HeroDtoMapperTest {
+class ArtistDtoMapperTest {
 
     @Test
     fun `WHEN toArtistModel with values EXPECT model has value id`() {

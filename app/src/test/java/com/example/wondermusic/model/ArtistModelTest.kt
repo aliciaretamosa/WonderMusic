@@ -10,7 +10,7 @@ import org.hamcrest.CoreMatchers.`is`
 import org.hamcrest.CoreMatchers.notNullValue
 import org.junit.Test
 
-class HeroModelTest {
+class ArtistModelTest {
 
     //
     var artistModel = ArtistModel(
