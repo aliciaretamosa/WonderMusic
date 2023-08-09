@@ -1,8 +1,9 @@
 package com.keepcoding.androidsuperpoderes.presentation.detail
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.keepcoding.androidsuperpoderes.HeroTestDataBuilder
-import com.keepcoding.androidsuperpoderes.domain.usecase.GetDetailUseCase
+import com.example.wondermusic.ArtistTestDataBuilder
+import com.example.wondermusic.domain.usecase.GetDetailUseCase
+import com.example.wondermusic.presentation.detail.DetailViewModel
 import com.keepcoding.androidsuperpoderes.testutil.DefaultDispatcherRule
 import com.keepcoding.androidsuperpoderes.testutil.getOrAwaitValue
 import io.mockk.MockKAnnotations
@@ -32,15 +33,16 @@ class DetailViewModelTest {
     @Test
     fun `WHEN detail viewModel getData EXPECT returns data`() = runTest {
         coEvery { getDetailUseCase.invoke("test-id") } returns
-                HeroTestDataBuilder().buildSingle()
+                ArtistTestDataBuilder().buildSingle()
 
         val viewModel = DetailViewModel(getDetailUseCase)
 
-        viewModel.getHero("test-id")
+        viewModel.getArtist("test-id")
 
-        val res = viewModel.hero.getOrAwaitValue()
+        val res = viewModel.artist.getOrAwaitValue()
 
         assertThat(res.id, `is`("test-id"))
     }
+
 
 }

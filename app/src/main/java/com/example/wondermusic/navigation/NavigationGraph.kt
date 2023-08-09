@@ -1,8 +1,8 @@
 package com.example.wondermusic.navigation
 
 import android.annotation.SuppressLint
-import android.graphics.drawable.Icon
-import androidx.annotation.StringRes
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Icon
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
@@ -13,21 +13,21 @@ import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.colorResource
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.wondermusic.R
-import com.example.wondermusic.presentation.detail.ArtistDetailScreen
 import com.example.wondermusic.presentation.list.ArtistListScreen
+import com.example.wondermusic.ui.theme.PastelPink
 
 
 sealed class BottomNavigationScreens(val route: String, val title: String, val icon: ImageVector) {
@@ -53,9 +53,7 @@ fun NavigationGraph() {
             addArtistFavoriteScreen(navController)
         }
     }
-
 }
-
 
 @Composable
 fun BottomNavigation(navController: NavController) {
@@ -64,23 +62,32 @@ fun BottomNavigation(navController: NavController) {
         BottomNavigationScreens.Favoritos
     )
     BottomNavigation(
-        backgroundColor = colorResource(id = R.color.teal_200),
-        contentColor = Color.Black
+        backgroundColor = colorResource(id = R.color.white),
+        contentColor = Color.Black,
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(15.dp,15.dp,0.dp,0.dp))
     ) {
         val navBackStackEntry by navController.currentBackStackEntryAsState()
         val currentRoute = navBackStackEntry?.destination?.route
         items.forEach { item ->
             BottomNavigationItem(
-                icon = { Icon(item.icon, contentDescription = item.title) },
-                label = { Text(text = item.title,
-                    fontSize = 9.sp) },
+                icon = { Icon(
+                    item.icon,
+                    contentDescription = item.title,
+                    tint = if(item.route == currentRoute) PastelPink else Color.Black
+                )
+                       },
+                label = { Text(
+                    if(item.route == currentRoute) item.title else "",
+                    fontSize = 9.sp
+                ) },
                 selectedContentColor = Color.Black,
                 unselectedContentColor = Color.Black.copy(0.4f),
                 alwaysShowLabel = true,
                 selected = currentRoute == item.route,
                 onClick = {
                     navController.navigate(item.route) {
-
                         navController.graph.startDestinationRoute?.let { screen_route ->
                             popUpTo(screen_route) {
                                 saveState = true
@@ -92,5 +99,14 @@ fun BottomNavigation(navController: NavController) {
                 }
             )
         }
+    }
+}
+
+@Preview
+@Composable
+fun BottomNavigationPreview() {
+    val navController = rememberNavController()
+    BottomNavigation() {
+        // Empty callback
     }
 }

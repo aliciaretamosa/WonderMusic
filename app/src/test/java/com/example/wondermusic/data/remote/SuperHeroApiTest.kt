@@ -1,9 +1,7 @@
 package com.keepcoding.androidsuperpoderes.data.remote
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.keepcoding.androidsuperpoderes.data.remote.dto.IdDto
-import com.keepcoding.androidsuperpoderes.data.remote.dto.LocationDto
-import com.keepcoding.androidsuperpoderes.data.remote.dto.SearchDto
+import com.example.wondermusic.data.remote.ArtistApi
 import com.keepcoding.androidsuperpoderes.di.baseUrl
 import com.keepcoding.androidsuperpoderes.testutil.DefaultDispatcherRule
 import com.squareup.moshi.Moshi
@@ -33,20 +31,21 @@ class SuperHeroApiTest {
     val mainDispatcherRule = DefaultDispatcherRule()
 
 
-    private lateinit var api: SuperHeroApi
+    private lateinit var api: ArtistApi
 
     @Before
     fun setup() {
-        api = retrofit.create(SuperHeroApi::class.java)
+        api = retrofit.create(ArtistApi::class.java)
     }
 
     @Test
     fun `WHEN request hero list EXPECT result`() = runTest {
-        val result = api.getHeroList(SearchDto())
+        val result = api.getArtistList()
 
-        assertThat(result.isNotEmpty(), `is`(true))
+        assertThat(result.artists.isNotEmpty(), `is`(true))
     }
 
+    /*
     @Test
     fun `WHEN request whit search EXPECT item`() = runTest {
         val result = api.getHeroList(SearchDto("Goku"))
@@ -93,7 +92,7 @@ class SuperHeroApiTest {
 
         assert(false)
     }
-
+    */
 
     companion object {
         private lateinit var retrofit: Retrofit

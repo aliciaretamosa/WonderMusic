@@ -13,5 +13,6 @@ data class ArtistLocal (
     @ColumnInfo(name = "name") val name: String,
     @Embedded val followers: FollowersLocal,
     @ColumnInfo(name = "genres") val genres: List<String>,
-    @Embedded val image: ImagesLocal
+    @Embedded val image: ImagesLocal,
+    @ColumnInfo(name = "favorite") val favorite: Boolean
     )

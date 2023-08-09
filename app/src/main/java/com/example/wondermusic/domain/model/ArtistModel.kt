@@ -9,4 +9,5 @@ data class ArtistModel (
     val images: ImagesModel,
     val followers: FollowersModel,
     val genres: List<String>?,
+    val favorite: Boolean
 )

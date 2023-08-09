@@ -2,8 +2,10 @@ package com.keepcoding.androidsuperpoderes.presentation.detail
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.example.wondermusic.ArtistTestDataBuilder
+import com.example.wondermusic.domain.usecase.GetArtistFavoriteUseCase
 import com.example.wondermusic.domain.usecase.GetDetailUseCase
 import com.example.wondermusic.presentation.detail.DetailViewModel
+import com.example.wondermusic.presentation.favorite.ArtistFavoriteViewModel
 import com.keepcoding.androidsuperpoderes.testutil.DefaultDispatcherRule
 import com.keepcoding.androidsuperpoderes.testutil.getOrAwaitValue
 import io.mockk.MockKAnnotations
@@ -16,14 +18,14 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
-class DetailViewModelTest {
+class FavoriteViewModelTest {
     @get:Rule
     val instantExecutorRule: InstantTaskExecutorRule = InstantTaskExecutorRule()
     @get:Rule
     val defaultDispatcherRule: DefaultDispatcherRule = DefaultDispatcherRule()
 
     @MockK(relaxed = true)
-    private lateinit var getDetailUseCase: GetDetailUseCase
+    private lateinit var getArtistFavoriteUseCase: GetArtistFavoriteUseCase
 
     @Before
     fun setup() {
@@ -31,17 +33,18 @@ class DetailViewModelTest {
     }
 
     @Test
-    fun `WHEN detail viewModel getData EXPECT returns data`() = runTest {
-        coEvery { getDetailUseCase.invoke("test-id") } returns
-                ArtistTestDataBuilder().buildSingle()
+    fun `WHEN favorite viewModel getFavoriteArtist EXPECT returns data`() = runTest {
+        coEvery { getArtistFavoriteUseCase.invoke() } returns ArtistTestDataBuilder()
+            .withNumElements(15)
+            .buildList()
 
-        val viewModel = DetailViewModel(getDetailUseCase)
+        val viewModel = ArtistFavoriteViewModel(getArtistFavoriteUseCase)
 
-        viewModel.getHero("test-id")
+        viewModel.getFavoriteArtists()
 
-        val res = viewModel.artist.getOrAwaitValue()
+        val res = viewModel.favoriteList.getOrAwaitValue()
 
-        assertThat(res.id, `is`("test-id"))
+        assertThat(res.size, `is`(15))
     }
 
 

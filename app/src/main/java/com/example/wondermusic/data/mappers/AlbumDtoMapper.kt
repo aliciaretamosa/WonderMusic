@@ -1,49 +1,34 @@
 package com.example.wondermusic.data.mappers
 
-import com.example.wondermusic.data.local.model.ArtistLocal
-import com.example.wondermusic.data.local.model.FollowersLocal
+import com.example.wondermusic.data.local.model.AlbumLocal
 import com.example.wondermusic.data.local.model.ImagesLocal
-import com.example.wondermusic.data.remote.dto.ArtistDto
-import com.example.wondermusic.domain.model.ArtistModel
-import com.example.wondermusic.domain.model.FollowersModel
+import com.example.wondermusic.data.remote.dto.AlbumDto
+import com.example.wondermusic.domain.model.AlbumModel
 import com.example.wondermusic.domain.model.ImagesModel
-import org.koin.core.KoinApplication.Companion.init
 
 
-fun ArtistDto.toArtistModel() = ArtistModel(
+fun AlbumDto.toAlbumModel() = AlbumModel(
     id = id ?: "",
     name = name ?: "",
-    images =  ImagesModel(images[0].height,images[0].url,images[0].width),
-    followers = FollowersModel(followers.total),
-    genres = genres,
-    favorite = false
+    images =  ImagesModel(images[0].height,images[0].url,images[0].width)
 )
 
-fun ArtistDto.toArtistLocal() = ArtistLocal(
-    id = id ?: "",
+fun AlbumDto.toAlbumLocal() = AlbumLocal(
+    albumId = id ?: "",
     name = name ?: "",
     image = ImagesLocal(images[0].height,images[0].url,images[0].width),
-    followers = FollowersLocal(followers.total),
-    genres = genres,
-    favorite = false
+    artistId = ""
 )
 
-fun ArtistLocal.toArtistModel() = ArtistModel(
-    id = id,
+fun AlbumLocal.toAlbumModel() = AlbumModel(
+    id = albumId,
     name = name,
     images = ImagesModel(image.height,image.url,image.width),
-    followers = FollowersModel(followers.total),
-    genres = genres,
-    favorite = favorite
-
-
 )
 
-fun ArtistDto.toArtistModelConstructorWithoutName() = ArtistModel(
-    id = id ?: "",
-    name = name ?: "",
-    images = ((images[0] ?: ImagesModel(0,"",0)) as ImagesModel),
-    followers = FollowersModel(followers.total),
-    genres = genres,
-    favorite = false
+
+fun AlbumDto.toAlbumModelConstructorWithoutName() = AlbumModel(
+    id = id,
+    name = name,
+    images = ImagesModel(0,"",0),
 )

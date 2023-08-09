@@ -29,6 +29,6 @@ fun NavGraphBuilder.addArtistDetailScreen(navController: NavHostController) {
 
 fun NavGraphBuilder.addArtistFavoriteScreen(navController: NavHostController) {
     composable(Screen.ArtistFavoriteScreen.route) {
-        ArtistFavoriteScreen ()
+        ArtistFavoriteScreen()
     }
 }

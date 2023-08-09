@@ -3,6 +3,7 @@ package com.example.wondermusic.presentation.detail
 import android.annotation.SuppressLint
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
@@ -13,6 +14,7 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.tooling.preview.Preview
 import com.example.wondermusic.components.ShowError
 import org.koin.androidx.compose.koinViewModel
 
@@ -20,46 +22,57 @@ import org.koin.androidx.compose.koinViewModel
 @Composable
 fun ArtistDetailScreen(
     id: String,
-    heroDetailViewModel: DetailViewModel = koinViewModel(),
+    artistDetailViewModel: DetailViewModel = koinViewModel(),
     onBack: () -> Unit
 ) {
-    val heroState = heroDetailViewModel.artist.observeAsState()
-    val errorState = heroDetailViewModel.errorMessage.observeAsState()
+    val artistState = artistDetailViewModel.artist.observeAsState()
+    val errorState = artistDetailViewModel.errorMessage.observeAsState()
 
-    heroDetailViewModel.getHero(id)
+    artistDetailViewModel.getArtist(id)
+    artistDetailViewModel.getTopTracks(id)
 
     if (errorState.value?.isNotEmpty() == true) {
         val error = errorState.value
         ShowError(error = error ?: "")
     }
 
-    val result = heroState.value
+    val result = artistState.value
 
     // Side Effects
     // Mutabilidad
     result?.let { artist ->
-        Scaffold(
-            topBar = {
-                TopAppBar(
-                    title = {
-                        Text("Detalle de ${ artist.name }")
-                    },
-                    navigationIcon = {
-                        IconButton(
-                            modifier = Modifier.semantics {
-                                contentDescription = "Atrás Botón Ir al listado de personajes"
-                            },
-                            onClick = onBack
-                        ) {
-                            Icon(Icons.Filled.ArrowBack, null)
+            Scaffold(
+                topBar = {
+                    TopAppBar(
+                        backgroundColor = MaterialTheme.colors.surface,
+                        title = {
+                            Text("Detalle de ${artist.name}")
+                        },
+                        navigationIcon = {
+                            IconButton(
+                                modifier = Modifier.semantics {
+                                    contentDescription = "Atrás Botón Ir al listado de artistas"
+                                },
+                                onClick = onBack
+                            ) {
+                                Icon(Icons.Filled.ArrowBack, null)
+                            }
                         }
-                    }
-                )
-            }
-        ) {
-            ShowArtistDetail(artist = artist)
+                    )
+                }
+            ) {
+                ShowArtistDetail(artist = artist)
+            } ?: run {
+            ShowError("Unknown error")
         }
-    } ?: run {
-        ShowError("Unknown error")
     }
 }
+
+    /*
+@Composable
+@Preview
+fun detailPreview() {
+    ArtistDetailScreen(id = "") {
+
+    }
+}*/

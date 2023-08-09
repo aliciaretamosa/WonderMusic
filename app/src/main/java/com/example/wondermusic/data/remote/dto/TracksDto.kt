@@ -1,4 +1,7 @@
 package com.example.wondermusic.data.remote.dto
 
-class TracksDto {
-}
+import com.squareup.moshi.Json
+
+data class TracksDto (
+    @Json(name = "tracks") val tracks: List<TrackDto>
+    )

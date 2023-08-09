@@ -1,17 +1,13 @@
 package com.example.wondermusic.data.remote
 
-import com.example.wondermusic.data.remote.dto.ArtistDto
 import com.example.wondermusic.data.remote.dto.ArtistsDto
-import com.example.wondermusic.data.remote.dto.SearchDto
-import org.koin.android.BuildConfig
-import retrofit2.http.Body
+import com.example.wondermusic.data.remote.dto.TracksDto
 import retrofit2.http.GET
 import retrofit2.http.Headers
-import retrofit2.http.POST
 
 
 const val TOKEN =
-    "BQCE0YKq4-kH3sFKGsAWDTX-ez2fKKg5OUpXEA2YDsxMwGY1bprFyhc3xYrUyPnLVr3dnK2FkkNnnnayGqsOI9rjUv_XvqnAYijkGFvvs70Cz7ZX5-Y"
+    "BQBPbWt0ucoDpxATBhqeI8tMSOBP2FekVQBHC3kiMpnGblnliMyPApV_ZHDeXSDGGUqjWub0JMCZioW8qquPchddUwbwJWlKXXH2KWXm1QmdnrIi-ZI"
 
 interface ArtistApi {
 
@@ -19,4 +15,45 @@ interface ArtistApi {
     @Headers("Authorization: Bearer $TOKEN")
     suspend fun getArtistList(): ArtistsDto
 
+    @GET("artists/2IMZYfNi21MGqxopj9fWx8/top-tracks?market=ES")
+    @Headers("Authorization: Bearer $TOKEN")
+    suspend fun getArtistTopTracksRelsB(): TracksDto
+
+    @GET("artists/7ltDVBr6mKbRvohxheJ9h1/top-tracks?market=ES")
+    @Headers("Authorization: Bearer $TOKEN")
+    suspend fun getArtistTopTracksRosalia(): TracksDto
+
+    @GET("artists/6k8mwkKJKKjBILo7ypBspl/top-tracks?market=ES")
+    @Headers("Authorization: Bearer $TOKEN")
+    suspend fun getArtistTopTracksAnaMena(): TracksDto
+
+    @GET("artists/4F4pp8NUW08JuXwnoxglpN/top-tracks?market=ES")
+    @Headers("Authorization: Bearer $TOKEN")
+    suspend fun getArtistTopTracksBadgyal(): TracksDto
+
+    @GET("artists/26VFTg2z8YR0cCuwLzESi2/top-tracks?market=ES")
+    @Headers("Authorization: Bearer $TOKEN")
+    suspend fun getArtistTopTracksHalsey(): TracksDto
+
+    @GET("artists/6qqNVTkY8uBg9cP3Jd7DAH/top-tracks?market=ES")
+    @Headers("Authorization: Bearer $TOKEN")
+    suspend fun getArtistTopTracksBillie(): TracksDto
+
+    @GET("artists/1HY2Jd0NmPuamShAr6KMms/top-tracks?market=ES")
+    @Headers("Authorization: Bearer $TOKEN")
+    suspend fun getArtistTopTracksLadyGaga(): TracksDto
+
+    @GET("artists/2CIMQHirSU0MQqyYHq0eOx/top-tracks?market=ES")
+    @Headers("Authorization: Bearer $TOKEN")
+    suspend fun getArtistTopTracksDeadmau(): TracksDto
+
+    @GET("artists/57dN52uHvrHOxijzpIgu3E/top-tracks?market=ES")
+    @Headers("Authorization: Bearer $TOKEN")
+    suspend fun getArtistTopTracksRatata(): TracksDto
+
+    @GET("artists/1vCWHaC5f2uS3yhpwWbIA6/top-tracks?market=ES")
+    @Headers("Authorization: Bearer $TOKEN")
+    suspend fun getArtistTopTracksAvicii(): TracksDto
+
 }
+

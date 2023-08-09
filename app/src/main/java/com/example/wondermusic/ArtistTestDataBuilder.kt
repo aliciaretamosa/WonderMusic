@@ -14,6 +14,7 @@ class ArtistTestDataBuilder {
     var followers: FollowersModel = FollowersModel(10)
     var numElements: Int = 1
     var images: ImagesModel = ImagesModel(10,"",10)
+    var favorite = false
 
     fun withName(name: String): ArtistTestDataBuilder {
         this.name = name
@@ -57,7 +58,8 @@ class ArtistTestDataBuilder {
                     name = name,
                     images = images,
                     genres = genres,
-                    followers =  followers
+                    followers =  followers,
+                    favorite = favorite
                 )
             )
         }
@@ -65,12 +67,14 @@ class ArtistTestDataBuilder {
         return list.toList()
     }
 
-    /*
+
     fun buildSingle() = ArtistModel(
         id = id,
         name = name,
         //genres = genres,
         images = images,
-        popularity = popularity
-    )*/
+        genres = genres,
+        followers =  followers,
+        favorite = favorite
+    )
 }

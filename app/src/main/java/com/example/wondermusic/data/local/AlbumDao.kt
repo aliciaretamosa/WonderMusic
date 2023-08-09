@@ -5,29 +5,25 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import androidx.room.Transaction
-import androidx.room.Update
-import com.example.wondermusic.data.local.model.ArtistLocal
-import com.example.wondermusic.data.local.model.ImagesLocal
+import com.example.wondermusic.data.local.model.AlbumLocal
 
 @Dao
-interface ArtistDao {
-    @Query("SELECT * FROM ArtistTable")
-    suspend fun getAll(): List<ArtistLocal>
+interface AlbumDao {
+    @Query("SELECT * FROM AlbumTable")
+    suspend fun getAll(): List<AlbumLocal>
 
-    @Query("SELECT * FROM ArtistTable WHERE id=:id")
-    suspend fun getArtistById(id: String) : ArtistLocal
+    @Query("SELECT * FROM AlbumTable WHERE albumId=:id")
+    suspend fun getAlbumById(id: String) : AlbumLocal
 
-    @Query("SELECT * FROM ArtistTable WHERE favorite = 1")
-    suspend fun getFavoriteArtists() : List<ArtistLocal>
-
-    @Query("UPDATE ArtistTable SET favorite = :state WHERE id = :id ")
-    suspend fun makeArtistFavorite(id: String, state: Boolean)
+    @Query("UPDATE AlbumTable SET artistId = :id")
+    suspend fun addIdColum(id: String)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertAll(list: List<ArtistLocal>)
+    suspend fun insertAll(list: List<AlbumLocal>)
 
     @Delete
-    suspend fun delete(model: ArtistLocal)
+    suspend fun delete(model: AlbumLocal)
 
+    @Query("DELETE FROM AlbumTable")
+    fun deleteAll()
 }

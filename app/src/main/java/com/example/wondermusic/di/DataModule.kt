@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Room
 import com.example.wondermusic.data.ArtistRepository
 import com.example.wondermusic.data.ArtistRepositoryImpl
+import com.example.wondermusic.data.local.AlbumDao
 import com.example.wondermusic.data.local.ArtistDao
 import com.example.wondermusic.data.local.ArtistDatabase
 import com.example.wondermusic.data.local.LocalDataSource
@@ -48,7 +49,7 @@ val dataModule = module {
 
     single<RemoteDataSource> { RemoteDataSourceImpl(get()) }
 
-    single<LocalDataSource> { LocalDataSourceImpl(get()) }
+    single<LocalDataSource> { LocalDataSourceImpl(get(),get()) }
 
     single<ArtistApi> {
         getArtistApi(get())
@@ -59,7 +60,11 @@ val dataModule = module {
     }
 
     single {
-        providesHeroDao(get())
+        providesArtistDao(get())
+    }
+
+    single {
+        providesAlbumDao(get())
     }
 
 }
@@ -74,5 +79,8 @@ private fun getDatabase(context: Context) : ArtistDatabase =
     ).fallbackToDestructiveMigration()
         .build()
 
-private fun providesHeroDao(db: ArtistDatabase) : ArtistDao =
+private fun providesArtistDao(db: ArtistDatabase) : ArtistDao =
     db.artistDao()
+
+private fun providesAlbumDao(db: ArtistDatabase) : AlbumDao =
+    db.albumDao()

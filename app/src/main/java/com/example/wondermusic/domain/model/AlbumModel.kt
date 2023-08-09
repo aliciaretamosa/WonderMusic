@@ -1,4 +1,7 @@
 package com.example.wondermusic.domain.model
 
-class AlbumModel {
-}
+data class AlbumModel (
+    val id: String,
+    val name : String,
+    val images: ImagesModel
+)

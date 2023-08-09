@@ -9,21 +9,23 @@ import com.example.wondermusic.domain.model.FollowersModel
 import com.example.wondermusic.domain.model.ImagesModel
 import org.koin.core.KoinApplication.Companion.init
 
+
 fun ArtistDto.toArtistModel() = ArtistModel(
     id = id ?: "",
     name = name ?: "",
     images =  ImagesModel(images[0].height,images[0].url,images[0].width),
     followers = FollowersModel(followers.total),
-    genres = genres
-    )
+    genres = genres,
+    favorite = false
+)
 
 fun ArtistDto.toArtistLocal() = ArtistLocal(
     id = id ?: "",
     name = name ?: "",
     image = ImagesLocal(images[0].height,images[0].url,images[0].width),
     followers = FollowersLocal(followers.total),
-    genres = genres
-
+    genres = genres,
+    favorite = false
 )
 
 fun ArtistLocal.toArtistModel() = ArtistModel(
@@ -31,7 +33,8 @@ fun ArtistLocal.toArtistModel() = ArtistModel(
     name = name,
     images = ImagesModel(image.height,image.url,image.width),
     followers = FollowersModel(followers.total),
-    genres = genres
+    genres = genres,
+    favorite = favorite
 
 
 )
@@ -41,5 +44,6 @@ fun ArtistDto.toArtistModelConstructorWithoutName() = ArtistModel(
     name = name ?: "",
     images = ((images[0] ?: ImagesModel(0,"",0)) as ImagesModel),
     followers = FollowersModel(followers.total),
-    genres = genres
+    genres = genres,
+    favorite = false
 )
