@@ -10,7 +10,6 @@ class RemoteDataSourceImpl(
     override suspend fun getArtistList(): List<ArtistDto> =
         artistApi.getArtistList().artists
 
-
     override suspend fun getArtistTopTracksRelsB(): List<AlbumDto> {
         val result: MutableList<AlbumDto> = mutableListOf()
         for (i in artistApi.getArtistTopTracksRelsB().tracks)

@@ -27,4 +27,10 @@ sealed class Screen(
         route = "artistFavorite",
         arguments = emptyList()
     )
+
+    object StartScreen : Screen(
+        route = "startScreen",
+        arguments = emptyList()
+    )
+
 }

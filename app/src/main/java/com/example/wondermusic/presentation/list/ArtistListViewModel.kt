@@ -26,7 +26,7 @@ class ArtistListViewModel(
         getData()
     }
 
-    private fun getData() {
+    private fun getData(){
         viewModelScope.launch {
             try {
                 _errorMessage.value = null

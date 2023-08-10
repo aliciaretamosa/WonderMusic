@@ -1,7 +1,7 @@
 package com.example.wondermusic.presentation.detail
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.focusable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -13,8 +13,11 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.Checkbox
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.Card
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -27,26 +30,24 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.semantics.clearAndSetSemantics
-import androidx.compose.ui.semantics.contentDescription
-import androidx.compose.ui.semantics.stateDescription
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.ui.viewinterop.AndroidView
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.example.wondermusic.R
 import com.example.wondermusic.components.ShowError
-import com.example.wondermusic.components.StarComponent
-import com.example.wondermusic.domain.model.AlbumModel
 import com.example.wondermusic.domain.model.ArtistModel
-import com.example.wondermusic.presentation.list.ArtistListViewModel
+import com.example.wondermusic.ui.theme.Green
+import com.example.wondermusic.ui.theme.LightPastelPink
 import com.example.wondermusic.ui.theme.PastelPink
-import com.example.wondermusic.ui.theme.globalPadding
+import com.example.wondermusic.ui.theme.globalRoundedCornerShape
 import org.koin.androidx.compose.koinViewModel
 
 val requester = FocusRequester()
@@ -54,7 +55,6 @@ val requester = FocusRequester()
 @Composable
 fun ShowArtistDetail(
     artist: ArtistModel,
-    artistListViewModel: ArtistListViewModel = koinViewModel(),
     artistDetailViewModel: DetailViewModel = koinViewModel(),
     ) {
 
@@ -72,14 +72,17 @@ fun ShowArtistDetail(
 
     Column(
         modifier = Modifier
-            .fillMaxWidth(),
+            .fillMaxWidth()
+            .fillMaxHeight()
+            .background(Brush.horizontalGradient(listOf(LightPastelPink, Green)))
+            .verticalScroll(rememberScrollState()),
         verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
+        horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Row(modifier = Modifier
             .padding(8.dp)) {
             Spacer(modifier = Modifier
-                .size(20.dp))
+                .size(25.dp))
             AsyncImage(
                 modifier = Modifier
                     .size(200.dp)
@@ -91,58 +94,78 @@ fun ShowArtistDetail(
                 model = ImageRequest.Builder(LocalContext.current)
                     .data(artist.images.url)
                     .build(),
-                contentDescription = "Personaje ${artist.name} Imagen"
+                contentDescription = "Artista ${artist.name}"
             )
         }
        Row(modifier = Modifier
            .fillMaxHeight()
        ) {
-           Column(verticalArrangement = Arrangement.Center,
+           Column(
+               verticalArrangement = Arrangement.Center,
                horizontalAlignment = Alignment.CenterHorizontally) {
-               Spacer(modifier = Modifier
-                   .size(40.dp))
-               Row() {
+               Row(verticalAlignment = Alignment.CenterVertically
+               ) {
                    Text(
                        text = artist.name,
-                       fontSize = 30.sp,
+                       color = Color.White,
+                       fontSize = 50.sp,
+                       fontWeight = FontWeight.ExtraBold,
                        maxLines = 1,
                        overflow = TextOverflow.Ellipsis
                    )
-                   AndroidView(
-                       modifier = Modifier.clickable {
-                           val newState = !starred
-                           starred = newState
-                       },
-                       factory = { context ->
-                           StarComponent(context).apply {
-                               this.checked = starred
-                           }
-                       },
-                       update = {
-                           it.checked = artist.favorite
-                           if(starred) { //guardar en favoritos
-                               artistListViewModel.makeArtistFavorite(artist.id,true)
-                           } else {
-                               artistListViewModel.makeArtistFavorite(artist.id,false)
-                           }
+                   Spacer(modifier = Modifier
+                       .size(15.dp))
+
+                   if(artist.favorite){
+                       Card(modifier = Modifier
+                           .padding(top = 20.dp),
+                           border = BorderStroke(1.dp, PastelPink),
+                           backgroundColor = LightPastelPink,
+                           shape = RoundedCornerShape(globalRoundedCornerShape)
+                       ) {
+                           Text(modifier = Modifier
+                               .width(70.dp),
+                               text = "Favorito",
+                               textAlign = TextAlign.Center,
+                               color = Color.Gray,
+                               fontSize = 15.sp,
+                               maxLines = 1,
+                               overflow = TextOverflow.Ellipsis
+                           )
                        }
-                   )
+                   }
                }
+
                Spacer(modifier = Modifier
-                   .size(10.dp))
+                   .size(2.dp))
                Text(
                    text = artist.followers.total.toString() + " seguidores",
+                   color = Color.DarkGray,
                    maxLines = 4,
                    overflow = TextOverflow.Ellipsis
                )
                Spacer(modifier = Modifier
                    .size(20.dp))
                Text(
-                   modifier = Modifier.padding(30.dp),
+                   modifier = Modifier.padding(start= 70.dp, end = 60.dp),
                    text = artist.genres.toString(),
+                   fontSize = 15.sp,
                    maxLines = 4,
                    overflow = TextOverflow.Ellipsis
                )
+
+               Spacer(modifier = Modifier
+                   .size(60.dp))
+
+               Text(modifier = Modifier
+                   .align(Alignment.Start)
+                   .padding(start = 20.dp),
+                   color = Color.White,
+                   text = "Top Tracks",
+                   fontSize = 25.sp)
+
+               Spacer(modifier = Modifier
+                   .size(25.dp))
 
                LazyRow(
                    modifier = Modifier
@@ -157,7 +180,6 @@ fun ShowArtistDetail(
                            ShowTrackList(track)
                        }
                    }
-
                }
 
            }
@@ -165,10 +187,4 @@ fun ShowArtistDetail(
        }
 
     }
-        /*
-        LaunchedEffect(Unit) {
-            this.coroutineContext.job.invokeOnCompletion {
-                requester.requestFocus()
-            }
-        }*/
 }

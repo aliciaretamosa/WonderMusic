@@ -29,26 +29,22 @@ class ArtistModelTest {
     }
 
     @Test
-    fun `WHEN heroModel id is 56 EXPECT id = 56`() {
+    fun `WHEN artistModel id is 56 EXPECT id = 56`() {
         val hero = ArtistTestDataBuilder()
             .buildSingle()
         assertThat(hero.id, `is`("test-id"))
     }
 
     @Test
-    fun `WHEN heroModel name is Alex EXPECT name = Alex`() {
+    fun `WHEN artistModel name is Alex EXPECT name = Alex`() {
         val hero = ArtistTestDataBuilder()
             .withName("Alex")
             .buildSingle()
         assertThat(hero.name, `is`("Alex"))
     }
 
-    /**
-     * Movido a StringExtTest
-     */
     @Test
-    fun `WHEN creates heroModel EXPECT photoUrl contains schema`() {
-        //assertThat(heroModel.photoUrl, `is`("foto"))
+    fun `WHEN creates artistModel EXPECT photoUrl contains schema`() {
         assertThat(artistModel.images.url, artistModel.images.url.startsWith("https"))
     }
 

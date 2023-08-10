@@ -27,9 +27,9 @@ class StarComponent @JvmOverloads constructor(
 
     private fun selectImage() = imageView.setImageResource(
         if (checked) {
-            R.drawable.star_filled
+            R.drawable.me_gusta_rosa
         } else {
-            R.drawable.star
+            R.drawable.me_gusta_rosa_b
         }
     )
 }

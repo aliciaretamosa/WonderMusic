@@ -1,7 +1,10 @@
 package com.example.wondermusic.navigation
 
 import android.annotation.SuppressLint
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Icon
 import androidx.compose.material.BottomNavigation
@@ -15,6 +18,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.colorResource
@@ -26,7 +30,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.wondermusic.R
+import com.example.wondermusic.presentation.favorite.ArtistFavoriteScreen
 import com.example.wondermusic.presentation.list.ArtistListScreen
+import com.example.wondermusic.ui.theme.Green
+import com.example.wondermusic.ui.theme.LightPastelPink
 import com.example.wondermusic.ui.theme.PastelPink
 
 
@@ -41,13 +48,24 @@ sealed class BottomNavigationScreens(val route: String, val title: String, val i
 fun NavigationGraph() {
     val navController = rememberNavController()
 
+    val screens = listOf(
+        Screen.ArtistListScreen,
+        Screen.ArtistFavoriteScreen,
+    )
+
+    val showBottomBar = navController
+        .currentBackStackEntryAsState().value?.destination?.route in screens.map { it.route }
+
     Scaffold(
-        bottomBar = { BottomNavigation(navController = navController) }
+        bottomBar = {
+            if(showBottomBar) BottomNavigation(navController = navController)
+        }
     ) {
         NavHost( // FragmentContainerView
             navController = navController,
-            startDestination = Screen.ArtistListScreen.route, // Igual que el startDestination
+            startDestination = Screen.StartScreen.route, // Igual que el startDestination
         ) {
+            addStartScreen(navController)
             addArtistListScreen(navController)
             addArtistDetailScreen(navController)
             addArtistFavoriteScreen(navController)
@@ -66,16 +84,20 @@ fun BottomNavigation(navController: NavController) {
         contentColor = Color.Black,
         modifier = Modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(15.dp,15.dp,0.dp,0.dp))
+            .clip(RoundedCornerShape(15.dp, 15.dp, 0.dp, 0.dp))
     ) {
         val navBackStackEntry by navController.currentBackStackEntryAsState()
         val currentRoute = navBackStackEntry?.destination?.route
         items.forEach { item ->
-            BottomNavigationItem(
+            BottomNavigationItem(modifier = Modifier
+                //.background(LightPastelPink)
+                .padding(top = 30.dp),
                 icon = { Icon(
                     item.icon,
                     contentDescription = item.title,
-                    tint = if(item.route == currentRoute) PastelPink else Color.Black
+                    modifier = Modifier
+                        .size(30.dp),
+                    tint = if(item.route == currentRoute) PastelPink else Color.Gray
                 )
                        },
                 label = { Text(

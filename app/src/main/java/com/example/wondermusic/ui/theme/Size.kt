@@ -4,5 +4,6 @@ import androidx.compose.ui.unit.dp
 
 
 val globalPadding = 8.dp
-val globalElevation = 20.dp
+val cardPadding = 12.dp
+val globalElevation = 10.dp
 val globalRoundedCornerShape = 10.dp

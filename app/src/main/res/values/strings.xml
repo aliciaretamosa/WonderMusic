@@ -2,4 +2,6 @@
     <string name="app_name">WonderMusic</string>
     <string name="artist_list_screen_route">ArtistListScreen</string>
     <string name="artist_detail_screen_route">ArtistDetailScreen</string>
+    <string name="entrar_a_la_aplicacion">Entrar a la aplicación</string>
+    <string name="pulse_en_la_pantalla_para_acceder">Pulse en la pantalla para acceder</string>
 </resources>
