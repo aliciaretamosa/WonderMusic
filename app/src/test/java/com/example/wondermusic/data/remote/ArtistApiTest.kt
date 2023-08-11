@@ -2,7 +2,7 @@ package com.keepcoding.androidsuperpoderes.data.remote
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.example.wondermusic.data.remote.ArtistApi
-import com.keepcoding.androidsuperpoderes.di.baseUrl
+import com.example.wondermusic.di.baseUrl
 import com.keepcoding.androidsuperpoderes.testutil.DefaultDispatcherRule
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
