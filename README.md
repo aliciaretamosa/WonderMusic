@@ -1,5 +1,5 @@
 # WonderMusic
-Para utilizar la aplicacion es necesario solicitar un toker que caduca en 3600 segundos, apartir de esta llamada
+Para utilizar la aplicacion es necesario solicitar un token que caduca en 3600 segundos, apartir de esta llamada
 
 curl -X POST "https://accounts.spotify.com/api/token" \
      -H "Content-Type: application/x-www-form-urlencoded" \
