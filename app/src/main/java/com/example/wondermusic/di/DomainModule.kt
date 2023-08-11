@@ -1,4 +1,4 @@
-package com.keepcoding.androidsuperpoderes.di
+package com.example.wondermusic.di
 
 import com.example.wondermusic.domain.usecase.GetArtistFavoriteUseCase
 import com.example.wondermusic.domain.usecase.GetArtistListUseCase

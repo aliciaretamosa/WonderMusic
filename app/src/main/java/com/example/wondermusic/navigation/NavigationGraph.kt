@@ -1,14 +1,13 @@
 package com.example.wondermusic.navigation
 
 import android.annotation.SuppressLint
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Icon
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
+import androidx.compose.material.Icon
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
@@ -18,7 +17,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.colorResource
@@ -30,10 +28,6 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.wondermusic.R
-import com.example.wondermusic.presentation.favorite.ArtistFavoriteScreen
-import com.example.wondermusic.presentation.list.ArtistListScreen
-import com.example.wondermusic.ui.theme.Green
-import com.example.wondermusic.ui.theme.LightPastelPink
 import com.example.wondermusic.ui.theme.PastelPink
 
 
@@ -128,7 +122,7 @@ fun BottomNavigation(navController: NavController) {
 @Composable
 fun BottomNavigationPreview() {
     val navController = rememberNavController()
-    BottomNavigation() {
+    BottomNavigation {
         // Empty callback
     }
 }

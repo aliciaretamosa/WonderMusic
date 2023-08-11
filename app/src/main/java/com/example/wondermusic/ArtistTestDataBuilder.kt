@@ -7,12 +7,12 @@ import com.example.wondermusic.domain.model.ImagesModel
 class ArtistTestDataBuilder {
     val id = "test-id"
     var name = ""
-    var photoUrl = ""
-    var photoHeight = 0
-    var photoWidth = 0
-    var genres = listOf<String>()
-    var followers: FollowersModel = FollowersModel(10)
-    var numElements: Int = 1
+    private var photoUrl = ""
+    private var photoHeight = 0
+    private var photoWidth = 0
+    private var genres = listOf<String>()
+    private var followers: FollowersModel = FollowersModel(10)
+    private var numElements: Int = 1
     var images: ImagesModel = ImagesModel(10,"",10)
     var favorite = false
 

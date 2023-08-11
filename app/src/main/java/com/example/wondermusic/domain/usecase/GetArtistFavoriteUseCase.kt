@@ -1,6 +1,5 @@
 package com.example.wondermusic.domain.usecase
 
-import android.util.Log
 import com.example.wondermusic.data.ArtistRepository
 
 class GetArtistFavoriteUseCase(

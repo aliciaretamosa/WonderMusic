@@ -1,4 +1,4 @@
-package com.keepcoding.androidsuperpoderes.di
+package com.example.wondermusic.di
 
 import android.content.Context
 import androidx.room.Room
@@ -21,7 +21,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
 //val baseUrl = BuildConfig.BASE_URL
-val baseUrl = "https://api.spotify.com/v1/"
+const val baseUrl = "https://api.spotify.com/v1/"
 val dataModule = module {
 
     single {

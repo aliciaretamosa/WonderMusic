@@ -1,9 +1,7 @@
 package com.example.wondermusic.data.local
 
-import android.util.Log
 import com.example.wondermusic.data.local.model.AlbumLocal
 import com.example.wondermusic.data.local.model.ArtistLocal
-import com.example.wondermusic.data.remote.dto.TrackDto
 
 class LocalDataSourceImpl(
     private val artistDao: ArtistDao,

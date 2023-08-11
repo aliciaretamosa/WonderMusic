@@ -16,8 +16,8 @@ class ArtistRepositoryImpl(
     override suspend fun getArtistList(): List<ArtistModel> {
         val localData = localDataSource.getArtistList()
 
-        if (localData.isNotEmpty()) {
-            return localData.map {
+        return if (localData.isNotEmpty()) {
+            localData.map {
                 it.toArtistModel()
             }
         } else {
@@ -26,7 +26,7 @@ class ArtistRepositoryImpl(
             }
             localDataSource.insertArtistList(remoteData.map { it.toArtistLocal() })
 
-            return remoteData.map {
+            remoteData.map {
                 it.toArtistModel()
             }
         }
@@ -50,8 +50,8 @@ class ArtistRepositoryImpl(
         localDataSource.deleteTracks()
         val localData = localDataSource.getArtistTopTracks()
 
-        if (localData.isNotEmpty()) {
-            return localData.map {
+        return if (localData.isNotEmpty()) {
+            localData.map {
                 it.toAlbumModel()
             }
         } else {
@@ -61,7 +61,7 @@ class ArtistRepositoryImpl(
             localDataSource.insertTopTracksList(remoteData.map { it.toAlbumLocal() })
             localDataSource.addIdColum(id)
 
-            return remoteData.map {
+            remoteData.map {
                 it.toAlbumModel()
             }
         }
@@ -72,8 +72,8 @@ class ArtistRepositoryImpl(
         localDataSource.deleteTracks()
         val localData = localDataSource.getArtistTopTracks()
 
-        if (localData.isNotEmpty()) {
-            return localData.map {
+        return if (localData.isNotEmpty()) {
+            localData.map {
                 it.toAlbumModel()
             }
         } else {
@@ -83,7 +83,7 @@ class ArtistRepositoryImpl(
             localDataSource.insertTopTracksList(remoteData.map { it.toAlbumLocal() })
             localDataSource.addIdColum(id)
 
-            return remoteData.map {
+            remoteData.map {
                 it.toAlbumModel()
             }
         }
@@ -93,8 +93,8 @@ class ArtistRepositoryImpl(
         localDataSource.deleteTracks()
         val localData = localDataSource.getArtistTopTracks()
 
-        if (localData.isNotEmpty()) {
-            return localData.map {
+        return if (localData.isNotEmpty()) {
+            localData.map {
                 it.toAlbumModel()
             }
         } else {
@@ -104,17 +104,18 @@ class ArtistRepositoryImpl(
             localDataSource.insertTopTracksList(remoteData.map { it.toAlbumLocal() })
             localDataSource.addIdColum(id)
 
-            return remoteData.map {
+            remoteData.map {
                 it.toAlbumModel()
             }
-        }    }
+        }
+    }
 
     override suspend fun getArtistTopTracksBadGyal(id: String): List<AlbumModel> {
         localDataSource.deleteTracks()
         val localData = localDataSource.getArtistTopTracks()
 
-        if (localData.isNotEmpty()) {
-            return localData.map {
+        return if (localData.isNotEmpty()) {
+            localData.map {
                 it.toAlbumModel()
             }
         } else {
@@ -124,17 +125,18 @@ class ArtistRepositoryImpl(
             localDataSource.insertTopTracksList(remoteData.map { it.toAlbumLocal() })
             localDataSource.addIdColum(id)
 
-            return remoteData.map {
+            remoteData.map {
                 it.toAlbumModel()
             }
-        }    }
+        }
+    }
 
     override suspend fun getArtistTopTracksHalsey(id: String): List<AlbumModel> {
         localDataSource.deleteTracks()
         val localData = localDataSource.getArtistTopTracks()
 
-        if (localData.isNotEmpty()) {
-            return localData.map {
+        return if (localData.isNotEmpty()) {
+            localData.map {
                 it.toAlbumModel()
             }
         } else {
@@ -144,17 +146,18 @@ class ArtistRepositoryImpl(
             localDataSource.insertTopTracksList(remoteData.map { it.toAlbumLocal() })
             localDataSource.addIdColum(id)
 
-            return remoteData.map {
+            remoteData.map {
                 it.toAlbumModel()
             }
-        }    }
+        }
+    }
 
     override suspend fun getArtistTopTracksBillie(id: String): List<AlbumModel> {
         localDataSource.deleteTracks()
         val localData = localDataSource.getArtistTopTracks()
 
-        if (localData.isNotEmpty()) {
-            return localData.map {
+        return if (localData.isNotEmpty()) {
+            localData.map {
                 it.toAlbumModel()
             }
         } else {
@@ -164,17 +167,18 @@ class ArtistRepositoryImpl(
             localDataSource.insertTopTracksList(remoteData.map { it.toAlbumLocal() })
             localDataSource.addIdColum(id)
 
-            return remoteData.map {
+            remoteData.map {
                 it.toAlbumModel()
             }
-        }    }
+        }
+    }
 
     override suspend fun getArtistTopTracksLadyGaga(id: String): List<AlbumModel> {
         localDataSource.deleteTracks()
         val localData = localDataSource.getArtistTopTracks()
 
-        if (localData.isNotEmpty()) {
-            return localData.map {
+        return if (localData.isNotEmpty()) {
+            localData.map {
                 it.toAlbumModel()
             }
         } else {
@@ -184,7 +188,7 @@ class ArtistRepositoryImpl(
             localDataSource.insertTopTracksList(remoteData.map { it.toAlbumLocal() })
             localDataSource.addIdColum(id)
 
-            return remoteData.map {
+            remoteData.map {
                 it.toAlbumModel()
             }
         }
@@ -194,8 +198,8 @@ class ArtistRepositoryImpl(
         localDataSource.deleteTracks()
         val localData = localDataSource.getArtistTopTracks()
 
-        if (localData.isNotEmpty()) {
-            return localData.map {
+        return if (localData.isNotEmpty()) {
+            localData.map {
                 it.toAlbumModel()
             }
         } else {
@@ -205,17 +209,18 @@ class ArtistRepositoryImpl(
             localDataSource.insertTopTracksList(remoteData.map { it.toAlbumLocal() })
             localDataSource.addIdColum(id)
 
-            return remoteData.map {
+            remoteData.map {
                 it.toAlbumModel()
             }
-        }    }
+        }
+    }
 
     override suspend fun getArtistTopTracksRatata(id: String): List<AlbumModel> {
         localDataSource.deleteTracks()
         val localData = localDataSource.getArtistTopTracks()
 
-        if (localData.isNotEmpty()) {
-            return localData.map {
+        return if (localData.isNotEmpty()) {
+            localData.map {
                 it.toAlbumModel()
             }
         } else {
@@ -225,17 +230,18 @@ class ArtistRepositoryImpl(
             localDataSource.insertTopTracksList(remoteData.map { it.toAlbumLocal() })
             localDataSource.addIdColum(id)
 
-            return remoteData.map {
+            remoteData.map {
                 it.toAlbumModel()
             }
-        }    }
+        }
+    }
 
     override suspend fun getArtistTopTracksAvicii(id: String): List<AlbumModel> {
         localDataSource.deleteTracks()
         val localData = localDataSource.getArtistTopTracks()
 
-        if (localData.isNotEmpty()) {
-            return localData.map {
+        return if (localData.isNotEmpty()) {
+            localData.map {
                 it.toAlbumModel()
             }
         } else {
@@ -245,8 +251,9 @@ class ArtistRepositoryImpl(
             localDataSource.insertTopTracksList(remoteData.map { it.toAlbumLocal() })
             localDataSource.addIdColum(id)
 
-            return remoteData.map {
+            remoteData.map {
                 it.toAlbumModel()
             }
-        }    }
+        }
+    }
 }

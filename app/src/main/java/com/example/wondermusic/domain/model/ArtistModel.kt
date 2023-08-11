@@ -1,8 +1,5 @@
 package com.example.wondermusic.domain.model
 
-import com.example.wondermusic.data.remote.dto.FollowersDto
-import com.squareup.moshi.Json
-
 data class ArtistModel (
     val id: String,
     val name: String,

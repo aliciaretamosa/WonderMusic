@@ -7,7 +7,6 @@ import com.example.wondermusic.data.remote.dto.ArtistDto
 import com.example.wondermusic.domain.model.ArtistModel
 import com.example.wondermusic.domain.model.FollowersModel
 import com.example.wondermusic.domain.model.ImagesModel
-import org.koin.core.KoinApplication.Companion.init
 
 
 fun ArtistDto.toArtistModel() = ArtistModel(

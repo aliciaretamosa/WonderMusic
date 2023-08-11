@@ -1,6 +1,5 @@
 package com.example.wondermusic.data.remote
 
-import android.util.Log
 import com.example.wondermusic.data.remote.dto.AlbumDto
 import com.example.wondermusic.data.remote.dto.ArtistDto
 

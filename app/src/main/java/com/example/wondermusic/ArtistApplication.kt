@@ -1,9 +1,9 @@
 package com.example.wondermusic
 
 import android.app.Application
-import com.keepcoding.androidsuperpoderes.di.dataModule
-import com.keepcoding.androidsuperpoderes.di.domainModule
-import com.keepcoding.androidsuperpoderes.di.presentationModule
+import com.example.wondermusic.di.dataModule
+import com.example.wondermusic.di.domainModule
+import com.example.wondermusic.di.presentationModule
 import org.koin.android.BuildConfig
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger

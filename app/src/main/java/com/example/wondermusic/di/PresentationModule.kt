@@ -1,4 +1,4 @@
-package com.keepcoding.androidsuperpoderes.di
+package com.example.wondermusic.di
 
 import com.example.wondermusic.presentation.detail.DetailViewModel
 import com.example.wondermusic.presentation.favorite.ArtistFavoriteViewModel

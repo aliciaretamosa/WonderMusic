@@ -1,13 +1,11 @@
 package com.example.wondermusic.presentation.favorite
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.wondermusic.domain.model.ArtistModel
 import com.example.wondermusic.domain.usecase.GetArtistFavoriteUseCase
-import com.example.wondermusic.domain.usecase.GetArtistListUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
