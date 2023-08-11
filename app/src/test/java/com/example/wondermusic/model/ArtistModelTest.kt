@@ -30,17 +30,17 @@ class ArtistModelTest {
 
     @Test
     fun `WHEN artistModel id is 56 EXPECT id = 56`() {
-        val hero = ArtistTestDataBuilder()
+        val artist = ArtistTestDataBuilder()
             .buildSingle()
-        assertThat(hero.id, `is`("test-id"))
+        assertThat(artist.id, `is`("test-id"))
     }
 
     @Test
     fun `WHEN artistModel name is Alex EXPECT name = Alex`() {
-        val hero = ArtistTestDataBuilder()
+        val artist = ArtistTestDataBuilder()
             .withName("Alex")
             .buildSingle()
-        assertThat(hero.name, `is`("Alex"))
+        assertThat(artist.name, `is`("Alex"))
     }
 
     @Test

@@ -84,55 +84,6 @@ class ArtistApiTest {
         assertThat(result.tracks.isNotEmpty(), `is`(true))
     }
 
-    /*
-    @Test
-    fun `WHEN request whit search EXPECT item`() = runTest {
-        val result = api.getHeroList(SearchDto("Goku"))
-
-        assertThat(result.size, `is`(1))
-    }
-
-    @Test
-    fun `WHEN request whit random text EXPECT empty list`() = runTest {
-        val result = api.getHeroList(SearchDto("asdf asdf"))
-
-        assertThat(result.isEmpty(), `is`(true))
-    }
-
-    @Test
-    fun `WHEN request hero location list EXPECT location list`() = runTest {
-        val result = api.getHeroLocationList(
-            IdDto(
-                "14BB8E98-6586-4EA7-B4D7-35D6A63F5AA3"
-            )
-        )
-
-        assertThat(result.isNotEmpty(), `is`(true))
-    }
-
-    @Test
-    fun `WHEN request hero location list EXPECT empty list`() = runTest {
-        val result = api.getHeroLocationList(
-            IdDto(
-                "81D51BD2-E82C-4E1D-8216-BDFB107C1F28"
-            )
-        )
-
-        assertThat(result, instanceOf(List::class.java))
-    }
-
-    @Test(expected = HttpException::class)
-    fun `WHEN request unkown location EXPECT throws exception`() = runTest {
-        api.getHeroLocationList(
-            IdDto(
-                "81D51BD2-E82asdfaC-4E1D-8216-BDFB107C1F28"
-            )
-        )
-
-        assert(false)
-    }
-    */
-
     companion object {
         private lateinit var retrofit: Retrofit
 
